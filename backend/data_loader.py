@@ -134,7 +134,7 @@ def refresh_clean_attempts() -> pd.DataFrame:
 
         # Step 4: Save to clean_attempts.csv
         final.to_csv("clean_attempts.csv", index=False)
-        print(f"✅ clean_attempts.csv refreshed — {len(final)} rows")
+        print(f"[DONE] clean_attempts.csv refreshed - {len(final)} rows")
 
         # BUG 2 FIX: pd.qcut() leaves time_taken_bucket as pandas 'category' dtype.
         # Returning the in-memory DataFrame directly causes Person 2 to fail with:
@@ -196,8 +196,12 @@ def save_attempt(attempt_data: dict) -> str:
     attempts = load_attempts()
 
     if len(attempts) > 0 and "attempt_id" in attempts.columns:
-        last_ids = attempts["attempt_id"].str.replace("A", "", regex=False).astype(int)
-        next_num = int(last_ids.max()) + 1
+        # Historical CSV rows can have blank or malformed IDs.
+        last_ids = pd.to_numeric(
+            attempts["attempt_id"].astype(str).str.extract(r"^A(\d+)$")[0],
+            errors="coerce",
+        )
+        next_num = int(last_ids.max()) + 1 if last_ids.notna().any() else 1
     else:
         next_num = 1
 

@@ -927,27 +927,49 @@ def submit_quiz_answer(submission: QuizSubmission):
     is_correct = selected_option == correct_option
     topic = str(question[topic_col]) if topic_col else "Unknown"
 
-    # Save the attempt so later questions can prefer unseen/wrong questions.
-    attempts_path = DATA_DIR / "attempts.csv"
+    # Score the topic before saving this answer.
+    from backend.data_loader import load_clean_attempts, save_attempt, refresh_clean_attempts
+    from backend.mastery import calculate_mastery
+    from backend.model_manager import get_model, get_time_fallback
+
+    before_df = load_clean_attempts()
+    before_mastery = calculate_mastery(before_df, submission.student_id)["mastery"].get(topic, 0.0)
+    difficulty = question.get("difficulty", 1)
+    try:
+        difficulty = int(float(difficulty))
+    except (ValueError, TypeError):
+        difficulty = 1
+
     attempt_record = {
         "student_id": submission.student_id,
         "question_id": question_id,
         "topic": topic,
+        "difficulty": difficulty,
         "selected_option": selected_option,
-        "is_correct": is_correct,
-        "time_taken_seconds": submission.time_taken_seconds,
+        "is_correct": int(is_correct),
+        "time_taken_seconds": max(1, submission.time_taken_seconds),
     }
 
     try:
-        new_attempt = pd.DataFrame([attempt_record])
-        if attempts_path.exists():
-            old_attempts = pd.read_csv(attempts_path)
-            updated = pd.concat([old_attempts, new_attempt], ignore_index=True)
-        else:
-            updated = new_attempt
-        updated.to_csv(attempts_path, index=False)
+        attempt_id = save_attempt(attempt_record)
+        after_df = refresh_clean_attempts()
+        after_mastery = calculate_mastery(after_df, submission.student_id)["mastery"].get(topic, 0.0)
     except Exception as e:
-        print(f"WARNING: Could not save attempt: {e}")
+        raise HTTPException(status_code=500, detail=f"Could not update quiz results: {e}") from e
+
+    predicted_success = None
+    model = get_model()
+    if model is not None:
+        try:
+            from backend.predictor import build_features, apply_time_imputer, predict_for_candidate
+            features = apply_time_imputer(build_features(after_df), get_time_fallback())
+            predicted_success = predict_for_candidate(
+                model, features, submission.student_id, topic, difficulty, get_time_fallback()
+            )
+        except Exception as e:
+            print(f"WARNING: Could not calculate ML prediction: {e}")
+
+    attempt_record["attempt_id"] = attempt_id
 
     # Response shape matches frontend/quiz.js.
     return {
@@ -956,10 +978,10 @@ def submit_quiz_answer(submission: QuizSubmission):
             "selected": selected_option,
             "correct": correct_option
         },
-        "before": {"mastery": 0.0},
+        "before": {"mastery": before_mastery},
         "after": {
-            "mastery": 0.0,
-            "predicted_success": None
+            "mastery": after_mastery,
+            "predicted_success": predicted_success
         },
         "weakness": {
             "reasons": [] if is_correct else ["incorrect_answer"],

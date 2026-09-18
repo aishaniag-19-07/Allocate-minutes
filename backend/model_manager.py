@@ -121,7 +121,7 @@ def initialize_model():
         _model_metrics = metrics
         _trained = True
 
-        print(f"✅ Model trained — accuracy: {metrics['accuracy']} | "
+        print(f"[DONE] Model trained - accuracy: {metrics['accuracy']} | "
               f"f1: {metrics['f1']} | train_size: {len(train_df)}")
 
     except Exception as e:

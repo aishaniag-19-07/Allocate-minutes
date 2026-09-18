@@ -52,10 +52,10 @@ app = FastAPI(
 
 @app.on_event("startup")
 async def startup_event():
-    print("🚀 Server starting — training ML model...")
+    print("[START] Server starting - training ML model...")
     from backend.model_manager import initialize_model
     initialize_model()
-    print("✅ Startup complete")
+    print("[DONE] Startup complete")
 
 
 # ============================================================
