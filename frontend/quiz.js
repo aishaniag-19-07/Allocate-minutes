@@ -29,8 +29,7 @@
 // CONFIG
 // ============================================================
 
-// const QUIZ_API_BASE = "http://127.0.0.1:8000";
-const API_BASE_URL = "https://allocate-minutes-api.vercel.app"
+const QUIZ_API_BASE = "http://127.0.0.1:8000";
 
 
 // ============================================================
