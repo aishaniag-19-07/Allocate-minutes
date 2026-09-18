@@ -52,6 +52,32 @@
       </div>
 
       <div class="form-group">
+  <label for="examGoal">Exam Goal</label>
+  <select id="examGoal" name="examGoal" required>
+    <option value="">Select your exam goal</option>
+    <option value="School Exams">School Exams</option>
+    <option value="JEE">JEE</option>
+    <option value="NEET">NEET</option>
+    <option value="CUET">CUET</option>
+    <option value="College Exams">College Exams</option>
+    <option value="Other">Other</option>
+  </select>
+</div>
+
+<div class="form-group">
+  <label for="availableMinutes">Available Study Time Per Day</label>
+  <select id="availableMinutes" name="availableMinutes" required>
+    <option value="">Select available time</option>
+    <option value="30">30 minutes</option>
+    <option value="60">1 hour</option>
+    <option value="90">1.5 hours</option>
+    <option value="120">2 hours</option>
+    <option value="180">3 hours</option>
+    <option value="240">4 hours</option>
+  </select>
+</div>
+
+      <div class="form-group">
         <label for="password">Password</label>
         <input type="password" id="password" name="password" placeholder="At least 6 characters" minlength="6" required>
       </div>
@@ -95,6 +121,8 @@
 
     async function handleSignup(e) {
       e.preventDefault();
+      const examGoal = document.getElementById('examGoal').value;
+const availableMinutes = document.getElementById('availableMinutes').value;
       const name = document.getElementById('fullName').value.trim();
       const email = document.getElementById('email').value.trim();
       const username = document.getElementById('username').value.trim();
@@ -112,7 +140,15 @@
       showBanner('', '');
 
       try {
-        const result = await registerUser({ name, email, username, password, grade });
+        const result = await registerUser({
+  name,
+  email,
+  username,
+  password,
+  grade,
+  exam_goal: examGoal,
+  available_minutes_per_day: Number(availableMinutes)
+});
         if (result.success) {
           showBanner(`Account created successfully for ${result.user.name}! Heading to your Dashboard...`, 'success');
           setTimeout(() => {

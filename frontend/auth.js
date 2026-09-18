@@ -153,14 +153,111 @@ async function authenticateUser(gmailId, pin) {
    backend registration API.
 */
 
-async function registerUser() {
+async function registerUser({
+  name,
+  email,
+  username,
+  password,
+  grade,
+  exam_goal,
+  available_minutes_per_day
+}) {
+
+  if (!name || !email || !username || !password || !grade) {
+    return {
+      success: false,
+      message: "Please fill in all required fields."
+    };
+  }
+
+  try {
+
+    const response = await fetch(
+      `${API_BASE_URL}/auth/signup`,
+      {
+        method: "POST",
+
+        headers: {
+          "Content-Type": "application/json"
+        },
+
+body: JSON.stringify({
+  name: name.trim(),
+  gmail_id: email.trim(),
+  username: username.trim(),
+  pin: password.trim(),
+  grade: grade,
+  exam_goal: exam_goal,
+  available_minutes_per_day: available_minutes_per_day
+})
+      }
+    );
+
+    let data = {};
+
+    try {
+      data = await response.json();
+    } catch (error) {
+      console.error(
+        "Could not parse signup response:",
+        error
+      );
+    }
+
+if (!response.ok) {
+
+  console.error("Signup backend error:", data);
+
+  let errorMessage = "Could not create account.";
+
+  if (typeof data.detail === "string") {
+    errorMessage = data.detail;
+  }
+
+  else if (Array.isArray(data.detail)) {
+    errorMessage = data.detail
+      .map(err => {
+        const field = err.loc?.[err.loc.length - 1] || "field";
+        return `${field}: ${err.msg}`;
+      })
+      .join(" | ");
+  }
+
+  else if (data.detail && typeof data.detail === "object") {
+    errorMessage =
+      data.detail.message ||
+      JSON.stringify(data.detail);
+  }
 
   return {
     success: false,
-    message:
-      "New student registration is currently disabled. Please contact the administrator."
+    message: errorMessage
   };
+}
 
+    const user = data.student || data;
+
+    setLoggedInUser(user);
+
+    return {
+      success: true,
+      user: user
+    };
+
+  } catch (error) {
+
+    console.error(
+      "Signup API error:",
+      error
+    );
+
+    return {
+      success: false,
+      message:
+        "Cannot connect to backend server."
+    };
+
+  }
 }
 
 
