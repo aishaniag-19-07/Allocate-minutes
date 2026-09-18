@@ -24,7 +24,8 @@
 // CONFIGURATION
 // ============================================================
 
-const API_BASE_URL = "http://127.0.0.1:8000";
+// const API_BASE_URL = "http://127.0.0.1:8000";
+const API_BASE_URL = "https://allocate-minutes-api.vercel.app"
 const SESSION_KEY = "am_current_user";
 
 

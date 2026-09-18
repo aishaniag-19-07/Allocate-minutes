@@ -92,6 +92,7 @@ app.add_middleware(
         "http://127.0.0.1:8080",
         "http://localhost:4000",        # Extra
         "http://127.0.0.1:4000",
+        "https://allocate-minutes.vercel.app",
         "null",                         # Allows fetch() from file:// (direct open)
     ],
     allow_methods=["*"],               # Allow GET, POST, PUT, DELETE, etc.
