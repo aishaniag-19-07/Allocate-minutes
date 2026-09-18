@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>A.M. | Allocate Minutes</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@1,600&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet" href="landing.css">
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <header class="navbar">
+
+        <a href="#home" class="brand">
+            <img src="logo.png" alt="A.M. Allocate Minutes" class="brand-logo">
+        </a>
+
+        <nav class="nav-links">
+            <a href="#home" class="nav-link active">Home</a>
+            <a href="#how" class="nav-link">How it works</a>
+            <a href="#features" class="nav-link">Features</a>
+            <a href="#about" class="nav-link">About</a>
+        </nav>
+
+        <div class="nav-actions">
+            <button class="text-button" id="signInButton">Sign in</button>
+
+            <a href="planner.html" class="primary-button">
+                Get started
+                <span>→</span>
+            </a>
+        </div>
+
+        <button class="menu-button" id="menuButton" aria-label="Open menu">
+            <span></span>
+            <span></span>
+        </button>
+
+    </header>
+
+
+    <!-- ================= HERO ================= -->
+
+    <main>
+
+        <section class="hero section" id="home">
+
+            <div class="hero-copy">
+
+                <div class="eyebrow">
+                    YOUR TIME. BETTER PLACED.
+                </div>
+
+                <h1>
+                    A study plan<br>
+                    that adapts<br>
+                    to <em>you.</em>
+                </h1>
+
+                <p class="hero-description">
+                    Allocate Minutes turns your strengths, weak areas and
+                    available time into a study plan that tells you
+                    <strong>what to study, when, and why.</strong>
+                </p>
+
+                <div class="hero-actions">
+
+                    <a href="planner.html" class="primary-button hero-button">
+                        Get started
+                        <span>→</span>
+                    </a>
+
+                    <button class="secondary-button" id="seeHowButton">
+                        See how it works
+                    </button>
+
+                </div>
+
+
+                <div class="hero-benefits">
+
+                    <div class="benefit">
+                        <div class="benefit-icon">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+
+                        <div>
+                            <strong>Personalized plans</strong>
+                            <p>Your minutes, intelligently allocated.</p>
+                        </div>
+                    </div>
+
+
+                    <div class="benefit">
+                        <div class="benefit-icon bars">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+
+                        <div>
+                            <strong>Track progress</strong>
+                            <p>See what is actually improving.</p>
+                        </div>
+                    </div>
+
+
+                    <div class="benefit">
+                        <div class="benefit-icon nodes">
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                        </div>
+
+                        <div>
+                            <strong>Plan adapts</strong>
+                            <p>Your performance changes your plan.</p>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ============= INTERACTIVE PRODUCT PREVIEW ============= -->
+
+            <div class="product-area">
+
+                <div class="orbit orbit-one"></div>
+                <div class="orbit orbit-two"></div>
+
+                <span class="orbit-label label-plan">plan</span>
+                <span class="orbit-label label-adapt">adapt</span>
+                <span class="orbit-label label-progress">progress</span>
+
+
+                <!-- Main planner -->
+
+                <article class="planner-card floating-card">
+
+                    <div class="planner-header">
+
+                        <div>
+                            <span class="tiny-label">TODAY</span>
+                            <h3>Good morning, Aarav.</h3>
+                            <p>You have <strong>90 minutes</strong> today.</p>
+                        </div>
+
+                        <span class="date">Thu, 18 Sep</span>
+
+                    </div>
+
+
+                    <div class="plan-heading">
+
+                        <div>
+                            <span>Today's plan</span>
+                            <small>Built around what needs attention</small>
+                        </div>
+
+                        <span class="minutes">
+                            90 min
+                        </span>
+
+                    </div>
+
+
+                    <div class="timeline" id="timeline">
+
+                        <button class="plan-row active-plan"
+                                data-topic="Recursion"
+                                data-reason="Your recent accuracy is 28%, so this needs attention first.">
+
+                            <span class="timeline-dot coral"></span>
+
+                            <span class="plan-time">
+                                09:00
+                                <small>30 min</small>
+                            </span>
+
+                            <span class="plan-topic">
+                                Recursion
+                                <small>Foundation</small>
+                            </span>
+
+                            <span class="priority urgent">
+                                Focus first
+                            </span>
+
+                        </button>
+
+
+                        <button class="plan-row"
+                                data-topic="Trees"
+                                data-reason="Trees follows Recursion because Recursion is currently a weak prerequisite.">
+
+                            <span class="timeline-dot amber"></span>
+
+                            <span class="plan-time">
+                                09:30
+                                <small>25 min</small>
+                            </span>
+
+                            <span class="plan-topic">
+                                Trees
+                                <small>Foundation</small>
+                            </span>
+
+                            <span class="priority next">
+                                Builds next
+                            </span>
+
+                        </button>
+
+
+                        <button class="plan-row"
+                                data-topic="Probability"
+                                data-reason="Your recent performance is improving, so this stays in the plan with less time.">
+
+                            <span class="timeline-dot green"></span>
+
+                            <span class="plan-time">
+                                09:55
+                                <small>20 min</small>
+                            </span>
+
+                            <span class="plan-topic">
+                                Probability
+                                <small>Practice</small>
+                            </span>
+
+                            <span class="priority steady">
+                                Continue
+                            </span>
+
+                        </button>
+
+
+                        <button class="plan-row"
+                                data-topic="Python"
+                                data-reason="You're currently performing well here, so only a short review is scheduled.">
+
+                            <span class="timeline-dot navy"></span>
+
+                            <span class="plan-time">
+                                10:15
+                                <small>15 min</small>
+                            </span>
+
+                            <span class="plan-topic">
+                                Python
+                                <small>Review</small>
+                            </span>
+
+                            <span class="priority review">
+                                Review
+                            </span>
+
+                        </button>
+
+                    </div>
+
+
+                    <!-- Why panel -->
+
+                    <div class="reason-box" id="reasonBox">
+
+                        <div class="reason-top">
+                            <span>WHY THIS?</span>
+                            <button id="closeReason">×</button>
+                        </div>
+
+                        <strong id="reasonTitle">Recursion comes first.</strong>
+
+                        <p id="reasonText">
+                            Your recent accuracy is 28%, so this needs
+                            attention first.
+                        </p>
+
+                    </div>
+
+
+                    <div class="planner-bottom">
+
+                        <div class="allocation">
+                            <span class="pulse"></span>
+                            Plan adapts as you improve
+                        </div>
+
+                        <button class="dark-button" id="startPlanButton">
+                            Start today's plan
+                            <span>→</span>
+                        </button>
+
+                    </div>
+
+                </article>
+
+
+                <!-- Progress mini card -->
+
+                <article class="mini-card progress-card">
+
+                    <span class="mini-title">YOUR PROGRESS</span>
+
+                    <div class="progress-circle" id="progressCircle">
+                        <div>
+                            <strong id="progressNumber">0%</strong>
+                            <span>mastery</span>
+                        </div>
+                    </div>
+
+                    <p>
+                        Up <strong>12%</strong> this week.
+                    </p>
+
+                </article>
+
+
+                <!-- Focus card -->
+
+                <article class="mini-card focus-card">
+
+                    <span class="mini-title">FOCUS AREAS</span>
+
+                    <div class="focus-item">
+                        <span class="focus-number">01</span>
+                        <div>
+                            <strong>Recursion</strong>
+                            <small>31% mastery</small>
+                        </div>
+                    </div>
+
+                    <div class="focus-item">
+                        <span class="focus-number">02</span>
+                        <div>
+                            <strong>Trees</strong>
+                            <small>28% mastery</small>
+                        </div>
+                    </div>
+
+                    <div class="focus-item">
+                        <span class="focus-number muted">03</span>
+                        <div>
+                            <strong>Probability</strong>
+                            <small>Improving</small>
+                        </div>
+                    </div>
+
+                </article>
+
+            </div>
+
+
+            <button class="scroll-hint" id="scrollHint">
+                <span class="mouse">
+                    <i></i>
+                </span>
+                Explore
+            </button>
+
+        </section>
+
+
+        <!-- ================= HOW IT WORKS ================= -->
+
+        <section class="how-section section" id="how">
+
+            <div class="section-heading">
+
+                <span class="eyebrow">HOW IT WORKS</span>
+
+                <h2>
+                    Your performance changes.<br>
+                    <em>Your plan changes with it.</em>
+                </h2>
+
+                <p>
+                    A.M. doesn't hand every student the same timetable.
+                    It continuously decides where your available minutes
+                    can help you most.
+                </p>
+
+            </div>
+
+
+            <div class="process-line">
+
+                <article class="process-step">
+                    <span class="step-number">01</span>
+                    <div class="step-line"></div>
+                    <h3>Understand</h3>
+                    <p>
+                        Your attempts reveal strengths, weak areas and
+                        repeated mistakes.
+                    </p>
+                </article>
+
+                <article class="process-step">
+                    <span class="step-number">02</span>
+                    <div class="step-line"></div>
+                    <h3>Prioritize</h3>
+                    <p>
+                        Topics are ranked using mastery, recency and
+                        prerequisite relationships.
+                    </p>
+                </article>
+
+                <article class="process-step">
+                    <span class="step-number">03</span>
+                    <div class="step-line"></div>
+                    <h3>Allocate</h3>
+                    <p>
+                        Your available study minutes are distributed
+                        across what matters today.
+                    </p>
+                </article>
+
+                <article class="process-step">
+                    <span class="step-number">04</span>
+                    <div class="step-line"></div>
+                    <h3>Adapt</h3>
+                    <p>
+                        New performance changes priorities and your
+                        remaining plan is rebuilt.
+                    </p>
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= ADAPTATION DEMO ================= -->
+
+        <section class="adapt-section section" id="features">
+
+            <div class="adapt-copy">
+
+                <span class="eyebrow">NOT A STATIC TIMETABLE</span>
+
+                <h2>
+                    When you improve,<br>
+                    your minutes <em>move.</em>
+                </h2>
+
+                <p>
+                    Try the interaction. A better Recursion result
+                    automatically changes how the remaining 90 minutes
+                    are allocated.
+                </p>
+
+                <button class="primary-button" id="adaptButton">
+                    Simulate improvement
+                    <span>↗</span>
+                </button>
+
+            </div>
+
+
+            <div class="comparison">
+
+                <div class="comparison-header">
+                    <span id="comparisonLabel">CURRENT PLAN</span>
+
+                    <span class="live-indicator">
+                        <i></i>
+                        adaptive
+                    </span>
+                </div>
+
+
+                <div class="allocation-row">
+                    <div>
+                        <strong>Recursion</strong>
+                        <small id="recursionReason">
+                            Needs attention
+                        </small>
+                    </div>
+
+                    <div class="allocation-bar">
+                        <span id="recursionBar" style="width: 75%"></span>
+                    </div>
+
+                    <strong id="recursionMinutes">30 min</strong>
+                </div>
+
+
+                <div class="allocation-row">
+                    <div>
+                        <strong>Trees</strong>
+                        <small>
+                            Next prerequisite path
+                        </small>
+                    </div>
+
+                    <div class="allocation-bar">
+                        <span id="treesBar" style="width: 62%"></span>
+                    </div>
+
+                    <strong id="treesMinutes">25 min</strong>
+                </div>
+
+
+                <div class="allocation-row">
+                    <div>
+                        <strong>Probability</strong>
+                        <small>
+                            Continue progress
+                        </small>
+                    </div>
+
+                    <div class="allocation-bar">
+                        <span id="probabilityBar" style="width: 50%"></span>
+                    </div>
+
+                    <strong id="probabilityMinutes">20 min</strong>
+                </div>
+
+
+                <div class="allocation-row">
+                    <div>
+                        <strong>Python</strong>
+                        <small>
+                            Quick review
+                        </small>
+                    </div>
+
+                    <div class="allocation-bar">
+                        <span id="pythonBar" style="width: 38%"></span>
+                    </div>
+
+                    <strong id="pythonMinutes">15 min</strong>
+                </div>
+
+
+                <div class="adapt-message" id="adaptMessage">
+
+                    <span>↗</span>
+
+                    <p>
+                        <strong>Your plan is ready.</strong>
+                        Complete a check-in and A.M. can redistribute
+                        your time.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= ABOUT / FINAL CTA ================= -->
+
+        <section class="final-section section" id="about">
+
+            <span class="small-logo">A:M</span>
+
+            <h2>
+                You don't need more time.<br>
+                You need to know <em>where it goes.</em>
+            </h2>
+
+            <p>
+                Turn limited study time into a plan that responds
+                to how you're actually performing.
+            </p>
+
+            <a href="planner.html" class="primary-button final-button">
+                Get started
+                <span>→</span>
+            </a>
+
+        </section>
+
+    </main>
+
+
+    <!-- ================= GET STARTED MODAL ================= -->
+
+    <div class="modal-overlay" id="modalOverlay">
+
+        <div class="modal">
+
+            <button class="modal-close" id="modalClose">×</button>
+
+            <span class="eyebrow">BUILD TODAY'S PLAN</span>
+
+            <h2>How much time do you have?</h2>
+
+            <p>
+                Choose your available time and we'll build a sample plan.
+            </p>
+
+            <div class="time-options">
+
+                <button data-time="30">30 min</button>
+                <button data-time="60">60 min</button>
+                <button class="selected" data-time="90">90 min</button>
+                <button data-time="120">2 hours</button>
+
+            </div>
+
+            <div class="modal-plan">
+
+                <div>
+                    <span>Recursion</span>
+                    <strong id="modalRecursion">30 min</strong>
+                </div>
+
+                <div>
+                    <span>Trees</span>
+                    <strong id="modalTrees">25 min</strong>
+                </div>
+
+                <div>
+                    <span>Probability</span>
+                    <strong id="modalProbability">20 min</strong>
+                </div>
+
+                <div>
+                    <span>Python</span>
+                    <strong id="modalPython">15 min</strong>
+                </div>
+
+            </div>
+
+            <a href="planner.html" class="primary-button modal-action">
+                Get started
+                <span>→</span>
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <script src="auth.js"></script>
+    <script src="script.js"></script>
+
+
+
+    
+</body>
+</html>

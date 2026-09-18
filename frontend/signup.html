@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Account · Allocate Minutes</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="auth.css">
+</head>
+<body>
+
+  <header class="auth-header">
+    <a href="index.html">
+      <img src="logo.png" alt="Allocate Minutes" class="auth-logo">
+    </a>
+  </header>
+
+  <main class="auth-card">
+    <span class="auth-card__eyebrow">START YOUR JOURNEY</span>
+    <h1 class="auth-card__title">Join Allocate <em>Minutes.</em></h1>
+    <p class="auth-card__subtitle">Create your student profile to start generating personalized, adaptive study plans.</p>
+
+    <div id="authBanner" class="auth-banner"></div>
+
+    <form id="signupForm" class="auth-form" onsubmit="handleSignup(event)">
+      <div class="form-group">
+        <label for="fullName">Full Name</label>
+        <input type="text" id="fullName" name="fullName" placeholder="e.g. Yash Vardhan" required autofocus>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" placeholder="e.g. yash@example.com" required>
+      </div>
+
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" placeholder="e.g. yashv" required>
+      </div>
+
+      <div class="form-group">
+        <label for="grade">Grade / Target Curriculum</label>
+        <select id="grade" name="grade">
+          <option value="Grade 9">Grade 9</option>
+          <option value="Grade 10">Grade 10</option>
+          <option value="Grade 11">Grade 11</option>
+          <option value="Grade 12">Grade 12</option>
+          <option value="Undergraduate">College / Undergraduate</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" placeholder="At least 6 characters" minlength="6" required>
+      </div>
+
+      <div class="form-row">
+        <label class="form-checkbox">
+          <input type="checkbox" id="agreeTerms" required checked>
+          <span>I agree to the Study Terms & Privacy</span>
+        </label>
+      </div>
+
+      <button type="submit" class="auth-btn" id="submitBtn">
+        <span>Create Account</span>
+        <span>→</span>
+      </button>
+    </form>
+
+    <div class="auth-footer">
+      Already have an account? <a href="login.html">Sign in instead</a>
+    </div>
+  </main>
+
+  <div class="return-home">
+    <a href="index.html">← Back to Main Page</a>
+  </div>
+
+  <script src="auth.js"></script>
+  <script>
+    function showBanner(msg, type) {
+      const b = document.getElementById('authBanner');
+      if (!msg) {
+        b.className = 'auth-banner';
+        b.textContent = '';
+        b.style.display = 'none';
+        return;
+      }
+      b.textContent = msg;
+      b.className = `auth-banner ${type}`;
+      b.style.display = 'block';
+    }
+
+    async function handleSignup(e) {
+      e.preventDefault();
+      const name = document.getElementById('fullName').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const username = document.getElementById('username').value.trim();
+      const grade = document.getElementById('grade').value;
+      const password = document.getElementById('password').value.trim();
+      const btn = document.getElementById('submitBtn');
+
+      if (password.length < 6) {
+        showBanner('Password must be at least 6 characters.', 'error');
+        return;
+      }
+
+      btn.disabled = true;
+      btn.innerHTML = '<span>Creating account...</span>';
+      showBanner('', '');
+
+      try {
+        const result = await registerUser({ name, email, username, password, grade });
+        if (result.success) {
+          showBanner(`Account created successfully for ${result.user.name}! Heading to your Dashboard...`, 'success');
+          setTimeout(() => {
+            window.location.href = 'planner.html';
+          }, 900);
+        } else {
+          showBanner(result.message || 'Could not create account. Please try again.', 'error');
+          btn.disabled = false;
+          btn.innerHTML = '<span>Create Account</span> <span>→</span>';
+        }
+      } catch (err) {
+        showBanner('An unexpected error occurred. Please try again.', 'error');
+        btn.disabled = false;
+        btn.innerHTML = '<span>Create Account</span> <span>→</span>';
+      }
+    }
+  </script>
+</body>
+</html>

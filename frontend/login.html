@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign In · Allocate Minutes</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="auth.css">
+</head>
+<body>
+
+  <header class="auth-header">
+    <a href="index.html">
+      <img src="logo.png" alt="Allocate Minutes" class="auth-logo">
+    </a>
+  </header>
+
+  <main class="auth-card">
+    <span class="auth-card__eyebrow">WELCOME BACK</span>
+    <h1 class="auth-card__title">Sign in to your <em>space.</em></h1>
+    <p class="auth-card__subtitle">Enter your credentials to access your adaptive study plan and quiz check-ins.</p>
+
+    <div id="authBanner" class="auth-banner"></div>
+
+    <form id="loginForm" class="auth-form" onsubmit="handleLogin(event)">
+      <div class="form-group">
+        <label for="identifier">Email or Username</label>
+        <input type="text" id="identifier" name="identifier" placeholder="e.g. aarav@example.com or aarav" required autofocus>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" placeholder="••••••••" required>
+      </div>
+
+      <div class="form-row">
+        <label class="form-checkbox">
+          <input type="checkbox" id="rememberMe" checked>
+          <span>Remember me</span>
+        </label>
+        <a href="#" class="forgot-link" onclick="alert('Demo notice: You can use password: password123 or select a demo account below.'); return false;">Forgot password?</a>
+      </div>
+
+      <button type="submit" class="auth-btn" id="submitBtn">
+        <span>Sign In</span>
+        <span>→</span>
+      </button>
+    </form>
+
+    <div class="quick-demo">
+      <span class="quick-demo__title">Quick Test Accounts (student.csv)</span>
+      <div class="quick-chips">
+        <button type="button" class="quick-chip" onclick="fillDemo('aarav@example.com', 'password123')">
+          👤 Aarav (Grade 9)
+        </button>
+        <button type="button" class="quick-chip" onclick="fillDemo('priya@example.com', 'pass456')">
+          👤 Priya (Grade 10)
+        </button>
+        <button type="button" class="quick-chip" onclick="fillDemo('rahul@example.com', 'student123')">
+          👤 Rahul (Grade 9)
+        </button>
+      </div>
+    </div>
+
+    <div class="auth-footer">
+      Don't have an account? <a href="signup.html">Create an account</a>
+    </div>
+  </main>
+
+  <div class="return-home">
+    <a href="index.html">← Back to Main Page</a>
+  </div>
+
+  <script src="auth.js"></script>
+  <script>
+    function fillDemo(email, pass) {
+      document.getElementById('identifier').value = email;
+      document.getElementById('password').value = pass;
+      showBanner('', '');
+    }
+
+    function showBanner(msg, type) {
+      const b = document.getElementById('authBanner');
+      if (!msg) {
+        b.className = 'auth-banner';
+        b.textContent = '';
+        b.style.display = 'none';
+        return;
+      }
+      b.textContent = msg;
+      b.className = `auth-banner ${type}`;
+      b.style.display = 'block';
+    }
+
+    async function handleLogin(e) {
+      e.preventDefault();
+      const identifier = document.getElementById('identifier').value.trim();
+      const password = document.getElementById('password').value.trim();
+      const btn = document.getElementById('submitBtn');
+
+      btn.disabled = true;
+      btn.innerHTML = '<span>Verifying...</span>';
+      showBanner('', '');
+
+      try {
+        const result = await authenticateUser(identifier, password);
+        if (result.success) {
+          showBanner(`Welcome back, ${result.user.name}! Redirecting to Dashboard...`, 'success');
+          setTimeout(() => {
+            window.location.href = 'planner.html';
+          }, 800);
+        } else {
+          showBanner(result.message || 'Invalid credentials. Please try again.', 'error');
+          btn.disabled = false;
+          btn.innerHTML = '<span>Sign In</span> <span>→</span>';
+        }
+      } catch (err) {
+        showBanner('An unexpected error occurred. Please try again.', 'error');
+        btn.disabled = false;
+        btn.innerHTML = '<span>Sign In</span> <span>→</span>';
+      }
+    }
+  </script>
+</body>
+</html>

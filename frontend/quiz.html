@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quiz · Allocate Minutes</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ============ Nav (placeholder — swap for P4's real dashboard header) ============ -->
+  <nav class="app-nav">
+    <div class="app-nav__brand">
+      <img src="logo.png" alt="Allocate Minutes" class="app-nav__logo">
+    </div>
+    <div class="app-nav__links">
+      <a href="planner.html">Dashboard</a>
+      <a href="plan.html">Study Plan</a>
+      <a href="quiz.html" class="active">Quiz</a>
+    </div>
+    <div class="app-nav__student">
+      <div class="app-nav__avatar">A</div>
+      <div>
+        <div class="app-nav__student-name" id="student-name">—</div>
+        <div class="app-nav__student-meta">Grade 9</div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="app-container">
+    <p class="page-eyebrow">Adaptive Quiz</p>
+    <h1 class="page-title">Let's check your understanding</h1>
+    <p class="page-subtitle">Questions adjust in difficulty as you go — just answer as best you can.</p>
+
+    <!-- ============ Active quiz state ============ -->
+    <section id="quiz-active">
+      <div class="progress-row">
+        <span id="question-number">Question 1 of 1</span>
+      </div>
+      <div class="progress-track" style="margin-bottom:24px;">
+        <div class="progress-fill" id="progress-fill" style="width:0%;"></div>
+      </div>
+
+      <div class="card">
+        <div class="quiz-meta">
+          <span id="question-topic">Topic</span>
+          <span class="badge badge-difficulty-easy" id="difficulty-badge">Easy</span>
+        </div>
+
+        <p class="quiz-question" id="question-text">Loading question…</p>
+
+        <div class="quiz-options" id="quiz-options"></div>
+
+        <div id="feedback-area"></div>
+
+        <div class="quiz-actions">
+          <button class="btn btn-primary" id="submit-btn" disabled onclick="submitAnswer()">Submit Answer</button>
+          <button class="btn btn-primary" id="next-btn" style="display:none;" onclick="nextQuestion()">Next Question</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ Completion state ============ -->
+    <section id="quiz-completion" style="display:none;">
+      <div class="card" style="text-align:center;">
+        <p class="page-eyebrow" style="text-align:center;">Quiz complete</p>
+        <div class="completion-score" id="completion-score">0/0</div>
+        <div class="completion-label" id="completion-pct">0% correct</div>
+
+        <div style="display:flex; gap:12px; justify-content:center; margin-top:28px; flex-wrap:wrap;">
+          <a class="btn btn-secondary" href="plan.html">Back to Study Plan</a>
+          <button class="btn btn-accent" id="requiz-btn" style="display:none;" onclick="restartQuiz()">Re-quiz this topic</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="auth.js"></script>
+  <script src="quiz.js"></script>
+</body>
+</html>

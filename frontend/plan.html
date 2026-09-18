@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Study Plan · Allocate Minutes</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ============ Nav (placeholder — swap for P4's real dashboard header) ============ -->
+  <nav class="app-nav">
+    <div class="app-nav__brand">
+      <img src="logo.png" alt="Allocate Minutes" class="app-nav__logo">
+    </div>
+    <div class="app-nav__links">
+      <a href="planner.html">Dashboard</a>
+      <a href="plan.html" class="active">Study Plan</a>
+      <a href="quiz.html">Quiz</a>
+    </div>
+    <div class="app-nav__student">
+      <div class="app-nav__avatar">A</div>
+      <div>
+        <div class="app-nav__student-name" id="student-name">—</div>
+        <div class="app-nav__student-meta">Grade 9</div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="app-container">
+    <p class="page-eyebrow">Today's Plan</p>
+    <h1 class="page-title">Your personalized study plan</h1>
+    <p class="page-subtitle">Built from your recent quiz results — work through these in order for the best results.</p>
+
+    <!-- ============ Summary card ============ -->
+    <div class="card" style="margin-bottom: 24px;">
+      <div class="plan-summary">
+        <div class="plan-summary__stat">
+          <div class="plan-summary__value" id="total-time">—</div>
+          <div class="plan-summary__label">Recommended today</div>
+        </div>
+        <div class="plan-summary__stat">
+          <div class="plan-summary__value" id="topic-count">—</div>
+          <div class="plan-summary__label">Topics in plan</div>
+        </div>
+        <div class="plan-summary__stat">
+          <div class="plan-summary__value" id="done-count">—</div>
+          <div class="plan-summary__label">Completed today</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ Plan items (rendered by plan.js) ============ -->
+    <div id="plan-list"></div>
+  </main>
+
+  <script src="auth.js"></script>
+  <script src="plan.js"></script>
+</body>
+</html>

@@ -1,0 +1,402 @@
+/* ============================================================
+   Allocate Minutes shared design system
+   Source of truth: the Allocate Minutes landing page screenshot.
+   Tokens below (colors, radii, shadows, type) were pulled from
+   that reference so P5's Quiz + Study Plan pages read as part
+   of the same product. When P4 hands over the real dashboard
+   CSS, these variables + component classes are the ones to
+   reconcile / replace.
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+:root {
+  /* --- Color: base palette pulled from the landing page --- */
+  --cream: #FBF1E6;          /* page background */
+  --cream-soft: #F3E1D2;     /* icon circles, secondary buttons, track fills */
+  --white: #FFFFFF;          /* cards */
+  --navy: #232A3D;           /* headings, primary buttons */
+  --navy-soft: #5B6275;      /* secondary text on navy surfaces */
+  --text-muted: #767287;     /* paragraph / helper text */
+  --terracotta: #C96A43;     /* primary accent (CTAs, progress, active states) */
+  --terracotta-dark: #AD5735;/* accent hover */
+  --terracotta-soft: #F1DDCB;
+
+  /* Status / badge colors, matching the "High Priority" / "Builds Next" pills */
+  --pink-bg: #FBE1DC;   --pink-text: #C1503C;
+  --yellow-bg: #FCEFD3; --yellow-text: #A6791E;
+  --green-bg: #DEF0E2;  --green-text: #3C8558;
+
+  --border: rgba(35, 42, 61, 0.08);
+  --shadow-card: 0 20px 40px -22px rgba(35, 42, 61, 0.22);
+  --shadow-card-hover: 0 24px 48px -20px rgba(35, 42, 61, 0.28);
+
+  --radius-lg: 22px;
+  --radius-md: 14px;
+  --radius-pill: 999px;
+
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  background: var(--cream);
+  color: var(--navy);
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: inherit; text-decoration: none; }
+
+/* ---------------- Top navigation (stand-in for P4's real nav) ---------------- */
+/* NOTE for the team: this header is a placeholder built to match the landing
+   page chrome. Swap it for P4's real dashboard sidebar/navbar markup once
+   available — the .app-container below doesn't depend on it. */
+.app-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 40px;
+  background: var(--cream);
+}
+
+.app-nav__brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+
+.app-nav__logo {
+  height: 42px;
+  width: auto;
+  display: block;
+  object-fit: contain;
+}
+
+.app-nav__mark {
+  width: 30px;
+  height: 30px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, var(--terracotta), #E0987A);
+}
+
+.app-nav__word {
+  font-weight: 800;
+  font-size: 1.15rem;
+  color: var(--navy);
+}
+
+.app-nav__links {
+  display: flex;
+  gap: 28px;
+  font-weight: 600;
+  color: var(--navy-soft);
+  font-size: 0.95rem;
+}
+
+.app-nav__links a { padding-bottom: 4px; border-bottom: 2px solid transparent; }
+.app-nav__links a.active { color: var(--navy); border-color: var(--terracotta); }
+.app-nav__links a:hover { color: var(--navy); }
+
+.app-nav__student {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  padding: 6px 14px 6px 6px;
+  border-radius: var(--radius-pill);
+}
+
+.app-nav__avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--cream-soft);
+  color: var(--terracotta-dark);
+  font-weight: 700;
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.app-nav__student-name { font-weight: 600; font-size: 0.9rem; }
+.app-nav__student-meta { font-size: 0.78rem; color: var(--text-muted); }
+
+/* ---------------- Layout ---------------- */
+.app-container {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 28px 40px 80px;
+}
+
+.page-eyebrow {
+  color: var(--terracotta);
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 0.02em;
+  margin: 0 0 6px;
+}
+
+.page-title {
+  font-size: 2rem;
+  font-weight: 800;
+  margin: 0 0 6px;
+  color: var(--navy);
+}
+
+.page-subtitle {
+  color: var(--text-muted);
+  margin: 0 0 28px;
+  font-size: 1rem;
+}
+
+/* ---------------- Cards ---------------- */
+.card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  padding: 28px;
+}
+
+.card + .card { margin-top: 20px; }
+
+/* ---------------- Buttons ---------------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: none;
+  border-radius: var(--radius-pill);
+  padding: 12px 24px;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: transform 0.15s ease, background 0.15s ease, opacity 0.15s ease;
+}
+
+.btn:active { transform: scale(0.98); }
+
+.btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.btn-primary { background: var(--navy); color: var(--white); }
+.btn-primary:not(:disabled):hover { background: #303853; }
+
+.btn-accent { background: var(--terracotta); color: var(--white); }
+.btn-accent:not(:disabled):hover { background: var(--terracotta-dark); }
+
+.btn-secondary {
+  background: var(--cream-soft);
+  color: var(--navy);
+  border: 1px solid var(--border);
+}
+.btn-secondary:not(:disabled):hover { background: #ECD8C6; }
+
+.btn-block { width: 100%; justify-content: center; }
+
+/* ---------------- Badges / pills ---------------- */
+.badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: var(--radius-pill);
+  font-size: 0.76rem;
+  font-weight: 700;
+}
+
+.badge-pink   { background: var(--pink-bg);   color: var(--pink-text); }
+.badge-yellow { background: var(--yellow-bg); color: var(--yellow-text); }
+.badge-green  { background: var(--green-bg);  color: var(--green-text); }
+
+/* Difficulty + priority reuse the same three tones */
+.badge-difficulty-easy,  .badge-priority-low    { background: var(--green-bg);  color: var(--green-text); }
+.badge-difficulty-medium, .badge-priority-medium { background: var(--yellow-bg); color: var(--yellow-text); }
+.badge-difficulty-hard,  .badge-priority-high   { background: var(--pink-bg);   color: var(--pink-text); }
+
+/* ---------------- Progress bar ---------------- */
+.progress-track {
+  width: 100%;
+  height: 8px;
+  background: var(--cream-soft);
+  border-radius: var(--radius-pill);
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: var(--terracotta);
+  border-radius: var(--radius-pill);
+  transition: width 0.3s ease;
+}
+
+.progress-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+/* ---------------- Quiz-specific ---------------- */
+.quiz-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 18px;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.quiz-question {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 4px 0 22px;
+  line-height: 1.4;
+}
+
+.quiz-options { display: flex; flex-direction: column; gap: 12px; margin-bottom: 22px; }
+
+.quiz-option {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-align: left;
+  padding: 14px 16px;
+  border-radius: var(--radius-md);
+  border: 1.5px solid var(--border);
+  background: var(--cream);
+  font-family: var(--font-sans);
+  font-size: 0.98rem;
+  font-weight: 600;
+  color: var(--navy);
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.quiz-option:hover:not(:disabled) { border-color: var(--terracotta); }
+
+.quiz-option__letter {
+  width: 26px;
+  height: 26px;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--navy-soft);
+}
+
+.quiz-option.selected {
+  border-color: var(--navy);
+  background: var(--white);
+}
+.quiz-option.selected .quiz-option__letter {
+  background: var(--navy);
+  border-color: var(--navy);
+  color: var(--white);
+}
+
+.quiz-option.correct {
+  border-color: var(--green-text);
+  background: var(--green-bg);
+}
+.quiz-option.correct .quiz-option__letter { background: var(--green-text); border-color: var(--green-text); color: var(--white); }
+
+.quiz-option.incorrect {
+  border-color: var(--pink-text);
+  background: var(--pink-bg);
+}
+.quiz-option.incorrect .quiz-option__letter { background: var(--pink-text); border-color: var(--pink-text); color: var(--white); }
+
+.quiz-option:disabled { cursor: default; }
+
+.feedback-banner {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 18px;
+  border-radius: var(--radius-md);
+  font-weight: 700;
+  margin-bottom: 14px;
+}
+
+.feedback-banner.correct { background: var(--green-bg); color: var(--green-text); }
+.feedback-banner.incorrect { background: var(--pink-bg); color: var(--pink-text); }
+
+.feedback-explanation {
+  color: var(--text-muted);
+  font-size: 0.92rem;
+  line-height: 1.55;
+  margin: 0 0 22px;
+}
+
+.quiz-actions { display: flex; justify-content: flex-end; }
+
+/* Completion state */
+.completion-score {
+  font-size: 2.6rem;
+  font-weight: 800;
+  color: var(--navy);
+  margin: 6px 0 2px;
+}
+
+.completion-label { color: var(--text-muted); font-weight: 600; font-size: 0.95rem; }
+
+/* ---------------- Study plan-specific ---------------- */
+.plan-summary {
+  display: flex;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+
+.plan-summary__stat { min-width: 120px; }
+.plan-summary__value { font-size: 1.6rem; font-weight: 800; color: var(--navy); }
+.plan-summary__label { font-size: 0.82rem; color: var(--text-muted); font-weight: 600; }
+
+.plan-item-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.plan-item-topic { font-size: 1.1rem; font-weight: 700; }
+.plan-item-duration { color: var(--text-muted); font-size: 0.85rem; font-weight: 600; margin-bottom: 10px; }
+
+.plan-item-reason {
+  background: var(--cream);
+  border-radius: var(--radius-md);
+  padding: 12px 14px;
+  font-size: 0.88rem;
+  color: var(--navy-soft);
+  line-height: 1.5;
+  margin-bottom: 16px;
+}
+
+.plan-item-reason strong { color: var(--navy); }
+
+.plan-item-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.plan-item-status { font-size: 0.82rem; font-weight: 700; color: var(--green-text); display: flex; align-items: center; gap: 6px; }
+
+@media (max-width: 640px) {
+  .app-nav { padding: 14px 20px; flex-wrap: wrap; gap: 12px; }
+  .app-nav__links { order: 3; width: 100%; justify-content: space-between; }
+  .app-container { padding: 20px 20px 60px; }
+  .plan-summary { gap: 20px; }
+}

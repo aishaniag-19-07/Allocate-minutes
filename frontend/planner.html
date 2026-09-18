@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>A.M. | Dashboard</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@1,600&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet" href="planner.css">
+</head>
+
+<body>
+
+<!-- =========================================================
+     HEADER
+========================================================= -->
+
+<header class="topbar">
+
+    <a href="index.html" class="brand">
+        <img src="logo.png" alt="Allocate Minutes">
+    </a>
+
+    <div class="header-right">
+
+        <div class="date">
+            <span>TODAY</span>
+            <strong>18 SEP · THURSDAY</strong>
+        </div>
+
+        <div class="profile">
+            <span>Aarav</span>
+            <div>A</div>
+        </div>
+
+    </div>
+
+</header>
+
+
+<main class="dashboard">
+
+
+    <!-- =====================================================
+         WELCOME
+    ====================================================== -->
+
+    <section class="welcome">
+
+        <div>
+
+            <span class="eyebrow">YOUR STUDY SPACE</span>
+
+            <h1>
+                Good morning, <em>Aarav.</em>
+            </h1>
+
+            <p>
+                You have <strong>90 minutes</strong> today.
+                Here's where they can make the most difference.
+            </p>
+
+        </div>
+
+
+        <div class="today-time">
+
+            <span>AVAILABLE TODAY</span>
+
+            <div>
+                <strong>90</strong>
+                <small>MIN</small>
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         MAIN DASHBOARD GRID
+    ====================================================== -->
+
+    <section class="main-grid">
+
+
+        <!-- =================================================
+             TODAY'S PLAN
+        ================================================== -->
+
+        <div class="panel plan-panel">
+
+            <div class="panel-heading">
+
+                <div>
+                    <span class="eyebrow">TODAY'S ALLOCATION</span>
+                    <h2>Your 90 minutes.</h2>
+                </div>
+
+                <div class="plan-end">
+                    DONE BY
+                    <strong>10:30</strong>
+                </div>
+
+            </div>
+
+
+            <div class="timeline">
+
+
+                <!-- RECURSION -->
+
+                <div class="timeline-item active"
+                     data-topic="recursion">
+
+                    <div class="timeline-time">
+                        <strong>09:00</strong>
+                        <span>30 min</span>
+                    </div>
+
+                    <div class="timeline-track">
+                        <i class="dot coral"></i>
+                    </div>
+
+                    <div class="timeline-info">
+
+                        <div class="topic-heading">
+
+                            <div>
+                                <span>DSA</span>
+                                <h3>Recursion</h3>
+                            </div>
+
+                            <span class="tag focus">
+                                FOCUS FIRST
+                            </span>
+
+                        </div>
+
+                        <p>
+                            Repeated base-case errors need attention.
+                        </p>
+
+                        <div class="mastery">
+
+                            <div>
+                                <span style="width:31%"></span>
+                            </div>
+
+                            <strong>31%</strong>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- TREES -->
+
+                <div class="timeline-item"
+                     data-topic="trees">
+
+                    <div class="timeline-time">
+                        <strong>09:30</strong>
+                        <span>25 min</span>
+                    </div>
+
+                    <div class="timeline-track">
+                        <i class="dot amber"></i>
+                    </div>
+
+                    <div class="timeline-info">
+
+                        <div class="topic-heading">
+
+                            <div>
+                                <span>DSA</span>
+                                <h3>Trees</h3>
+                            </div>
+
+                            <span class="tag next">
+                                BUILDS NEXT
+                            </span>
+
+                        </div>
+
+                        <p>
+                            Weak mastery and linked to Recursion.
+                        </p>
+
+                        <div class="mastery">
+
+                            <div>
+                                <span style="width:28%"></span>
+                            </div>
+
+                            <strong>28%</strong>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- PROBABILITY -->
+
+                <div class="timeline-item"
+                     data-topic="probability">
+
+                    <div class="timeline-time">
+                        <strong>09:55</strong>
+                        <span>20 min</span>
+                    </div>
+
+                    <div class="timeline-track">
+                        <i class="dot green"></i>
+                    </div>
+
+                    <div class="timeline-info">
+
+                        <div class="topic-heading">
+
+                            <div>
+                                <span>MATHEMATICS</span>
+                                <h3>Probability</h3>
+                            </div>
+
+                            <span class="tag steady">
+                                KEEP GOING
+                            </span>
+
+                        </div>
+
+                        <p>
+                            Improving steadily. Keep the momentum.
+                        </p>
+
+                        <div class="mastery">
+
+                            <div>
+                                <span style="width:54%"></span>
+                            </div>
+
+                            <strong>54%</strong>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- PYTHON -->
+
+                <div class="timeline-item"
+                     data-topic="python">
+
+                    <div class="timeline-time">
+                        <strong>10:15</strong>
+                        <span>15 min</span>
+                    </div>
+
+                    <div class="timeline-track last">
+                        <i class="dot navy"></i>
+                    </div>
+
+                    <div class="timeline-info">
+
+                        <div class="topic-heading">
+
+                            <div>
+                                <span>PYTHON</span>
+                                <h3>Quick Review</h3>
+                            </div>
+
+                            <span class="tag review">
+                                REVIEW
+                            </span>
+
+                        </div>
+
+                        <p>
+                            Stronger area. A short review is enough.
+                        </p>
+
+                        <div class="mastery">
+
+                            <div>
+                                <span style="width:72%"></span>
+                            </div>
+
+                            <strong>72%</strong>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             RIGHT COLUMN
+        ================================================== -->
+
+        <div class="right-column">
+
+
+            <!-- NEEDS ATTENTION -->
+
+            <div class="panel attention-panel">
+
+                <div class="panel-heading small">
+
+                    <div>
+                        <span class="eyebrow">NEEDS ATTENTION</span>
+                        <h2>Priority areas</h2>
+                    </div>
+
+                    <span class="count">3</span>
+
+                </div>
+
+
+                <div class="priority-list">
+
+
+                    <div class="priority-item">
+
+                        <span class="number">01</span>
+
+                        <div>
+                            <strong>Recursion</strong>
+                            <small>3 repeated base-case errors</small>
+                        </div>
+
+                        <strong class="score">31%</strong>
+
+                    </div>
+
+
+                    <div class="priority-item">
+
+                        <span class="number">02</span>
+
+                        <div>
+                            <strong>Trees</strong>
+                            <small>Weak prerequisite detected</small>
+                        </div>
+
+                        <strong class="score">28%</strong>
+
+                    </div>
+
+
+                    <div class="priority-item">
+
+                        <span class="number">03</span>
+
+                        <div>
+                            <strong>Probability</strong>
+                            <small>Improving, needs consistency</small>
+                        </div>
+
+                        <strong class="score">54%</strong>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ADAPTIVE QUIZ -->
+
+            <div class="quiz-panel">
+
+                <div class="quiz-top">
+
+                    <span class="quiz-pulse"></span>
+
+                    <span>READY FOR YOU</span>
+
+                </div>
+
+
+                <h2>
+                    A quick check can make
+                    tomorrow's plan <em>smarter.</em>
+                </h2>
+
+
+                <p>
+                    Your quiz adapts to your current weak areas
+                    and recommended difficulty.
+                </p>
+
+
+                <div class="quiz-meta">
+
+                    <div>
+                        <span>QUESTIONS</span>
+                        <strong>5</strong>
+                    </div>
+
+                    <div>
+                        <span>FOCUS</span>
+                        <strong>Recursion</strong>
+                    </div>
+
+                    <div>
+                        <span>LEVEL</span>
+                        <strong>Easy</strong>
+                    </div>
+
+                </div>
+
+
+                <!-- ONLY MAIN BUTTON -->
+
+                <button id="adaptiveQuizButton"
+                        class="quiz-button">
+
+                    <span>
+                        Take adaptive quiz
+                    </span>
+
+                    <i>→</i>
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         WHY THIS PLAN
+    ====================================================== -->
+
+    <section class="reason-section">
+
+        <div class="reason-intro">
+
+            <span class="eyebrow">WHY THIS PLAN?</span>
+
+            <h2 id="reasonTitle">
+                Recursion comes first.
+            </h2>
+
+            <p id="reasonText">
+                Your recent accuracy has fallen to 28% and
+                you've repeated the same base-case mistake
+                three times.
+            </p>
+
+        </div>
+
+
+        <div class="reason-signals">
+
+            <div>
+                <span>MASTERY</span>
+                <strong id="reasonMastery">31%</strong>
+            </div>
+
+            <div>
+                <span>RECENT ACCURACY</span>
+                <strong id="reasonAccuracy">28%</strong>
+            </div>
+
+            <div>
+                <span>REPEATED ERRORS</span>
+                <strong id="reasonErrors">3</strong>
+            </div>
+
+        </div>
+
+
+        <div class="concept-path">
+
+            <span>CONCEPT CONNECTION</span>
+
+            <div>
+
+                <span>Functions</span>
+
+                <i></i>
+
+                <strong>Recursion</strong>
+
+                <i></i>
+
+                <span>Trees</span>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+
+
+    <!-- =====================================================
+         CONCEPT CONNECTION MAP
+    ====================================================== -->
+
+    <section class="concept-map-section panel" id="conceptMapSection">
+        <div class="concept-map-copy">
+            <span class="eyebrow">CONCEPT CONNECTION MAP</span>
+            <h2>See how your learning connects.</h2>
+            <p>Weak concepts rarely live alone. This map shows the prerequisite path around your current focus so you know what unlocks what next.</p>
+            <div class="map-legend">
+                <span><i class="legend-dot mastered"></i> Strong</span>
+                <span><i class="legend-dot focus-dot"></i> Current focus</span>
+                <span><i class="legend-dot next-dot"></i> Builds next</span>
+            </div>
+        </div>
+
+        <div class="concept-map" aria-label="Concept connection map">
+            <svg class="map-lines" viewBox="0 0 700 330" preserveAspectRatio="none" aria-hidden="true">
+                <path d="M90 165 C155 165 155 85 230 85" />
+                <path d="M90 165 C155 165 155 245 230 245" />
+                <path d="M290 85 C355 85 350 165 410 165" />
+                <path d="M290 245 C355 245 350 165 410 165" />
+                <path d="M475 165 C535 165 535 85 610 85" />
+                <path d="M475 165 C535 165 535 245 610 245" />
+            </svg>
+
+            <div class="map-node strong-node node-functions">
+                <small>FOUNDATION</small><strong>Functions</strong><span>72% mastery</span>
+            </div>
+            <div class="map-node support-node node-stack">
+                <small>SUPPORT</small><strong>Call Stack</strong><span>58% mastery</span>
+            </div>
+            <div class="map-node support-node node-base">
+                <small>SUPPORT</small><strong>Base Cases</strong><span>43% mastery</span>
+            </div>
+            <div class="map-node focus-node node-recursion">
+                <span class="node-pulse"></span><small>FOCUS NOW</small><strong id="mapFocusTopic">Recursion</strong><span id="mapFocusMastery">31% mastery</span>
+            </div>
+            <div class="map-node next-node node-trees">
+                <small>UNLOCKS</small><strong>Trees</strong><span>28% mastery</span>
+            </div>
+            <div class="map-node next-node node-dp">
+                <small>UNLOCKS</small><strong>Dynamic Programming</strong><span>Next concept</span>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- =====================================================
+         PROGRESS ROW
+    ====================================================== -->
+
+    <section class="progress-grid">
+
+
+        <!-- WEEK -->
+
+        <div class="panel week-panel">
+
+            <div class="panel-heading">
+
+                <div>
+                    <span class="eyebrow">YOUR WEEK</span>
+                    <h2>Time invested</h2>
+                </div>
+
+                <strong class="week-total">
+                    4h 45m
+                </strong>
+
+            </div>
+
+
+            <div class="week-chart">
+
+
+                <div class="day">
+
+                    <span>MON</span>
+
+                    <div class="bar">
+                        <i style="height:50%"></i>
+                    </div>
+
+                    <strong>60</strong>
+
+                </div>
+
+
+                <div class="day">
+
+                    <span>TUE</span>
+
+                    <div class="bar">
+                        <i style="height:75%"></i>
+                    </div>
+
+                    <strong>90</strong>
+
+                </div>
+
+
+                <div class="day">
+
+                    <span>WED</span>
+
+                    <div class="bar">
+                        <i style="height:38%"></i>
+                    </div>
+
+                    <strong>45</strong>
+
+                </div>
+
+
+                <div class="day today">
+
+                    <span>THU</span>
+
+                    <div class="bar">
+                        <i style="height:75%"></i>
+                    </div>
+
+                    <strong>90</strong>
+
+                </div>
+
+
+                <div class="day future">
+
+                    <span>FRI</span>
+
+                    <div class="bar">
+                        <i></i>
+                    </div>
+
+                    <strong>·</strong>
+
+                </div>
+
+
+                <div class="day future">
+
+                    <span>SAT</span>
+
+                    <div class="bar">
+                        <i></i>
+                    </div>
+
+                    <strong>·</strong>
+
+                </div>
+
+
+                <div class="day future">
+
+                    <span>SUN</span>
+
+                    <div class="bar">
+                        <i></i>
+                    </div>
+
+                    <strong>·</strong>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+
+        <!-- MASTERY PROGRESS -->
+
+        <div class="panel progress-panel">
+
+            <span class="eyebrow">
+                MASTERY MOVEMENT
+            </span>
+
+            <div class="movement-heading">
+
+                <div>
+                    <h2>Recursion</h2>
+
+                    <p>
+                        Your weakest area is moving.
+                    </p>
+                </div>
+
+                <span class="positive">
+                    +7
+                </span>
+
+            </div>
+
+
+            <div class="movement">
+
+                <div class="movement-number">
+
+                    <span>MON</span>
+                    <strong>24%</strong>
+
+                </div>
+
+
+                <div class="movement-line">
+
+                    <i></i>
+                    <span></span>
+                    <i></i>
+
+                </div>
+
+
+                <div class="movement-number current">
+
+                    <span>TODAY</span>
+                    <strong>31%</strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="movement-note">
+
+                <span>↗</span>
+
+                <p>
+                    7 point improvement this week.
+                    Keep the concept in today's plan.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         ADAPTIVE SYSTEM MESSAGE
+    ====================================================== -->
+
+    <section class="adaptive-note">
+
+        <div class="adaptive-icon">
+            AM
+        </div>
+
+        <div>
+
+            <span>HOW A.M. ADAPTS</span>
+
+            <h3>
+                Your next quiz result changes what happens next.
+            </h3>
+
+            <p>
+                If your Recursion performance improves, its
+                mastery rises, priority can drop, difficulty can
+                increase, and more of your next study block can
+                move toward another weak concept.
+            </p>
+
+        </div>
+
+        <div class="adapt-example">
+
+            <div>
+                <span>NOW</span>
+                <strong>31%</strong>
+            </div>
+
+            <i>→</i>
+
+            <div>
+                <span>AFTER IMPROVEMENT</span>
+                <strong>46%</strong>
+            </div>
+
+        </div>
+
+    </section>
+
+
+</main>
+
+
+
+<!-- =========================================================
+     QUIZ PREVIEW
+     This opens from the ONLY button.
+========================================================= -->
+
+<div class="quiz-overlay"
+     id="quizOverlay">
+
+    <div class="quiz-modal">
+
+        <div class="modal-header">
+
+            <div>
+                <span>ADAPTIVE QUIZ</span>
+                <h2>Recursion check-in</h2>
+            </div>
+
+            <span class="modal-close"
+                  id="closeQuiz">×</span>
+
+        </div>
+
+
+        <p>
+            5 questions selected from your current
+            weak area at an Easy starting difficulty.
+        </p>
+
+
+        <div class="modal-details">
+
+            <div>
+                <span>FOCUS</span>
+                <strong>Recursion</strong>
+            </div>
+
+            <div>
+                <span>QUESTIONS</span>
+                <strong>5</strong>
+            </div>
+
+            <div>
+                <span>STARTING LEVEL</span>
+                <strong>Easy</strong>
+            </div>
+
+        </div>
+
+
+        <div class="modal-message">
+            Quiz interface will connect here with your
+            adaptive question-selection logic.
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================================================
+     A.M. STUDY ASSISTANT
+========================================================= -->
+<div class="study-chat" id="studyChat">
+    <button class="chat-launcher" id="chatLauncher" aria-label="Open study assistant">
+        <span class="chat-spark">✦</span>
+        <span class="chat-launcher-label">Ask A.M.</span>
+    </button>
+
+    <section class="chat-window" id="chatWindow" aria-hidden="true">
+        <div class="chat-header">
+            <div class="chat-avatar">AM</div>
+            <div><strong>A.M. Study Assistant</strong><span><i></i> Here to help you study</span></div>
+            <button id="closeChat" class="chat-close" aria-label="Close chat">×</button>
+        </div>
+        <div class="chat-messages" id="chatMessages">
+            <div class="chat-message bot">
+                <p>Hi! I can explain a weak concept, tell you why it is in your plan, or help you decide what to revise next.</p>
+            </div>
+        </div>
+        <div class="chat-suggestions">
+            <button data-chat-prompt="Why is my focus topic important?">Why this topic?</button>
+            <button data-chat-prompt="Explain my weakest concept simply.">Explain simply</button>
+            <button data-chat-prompt="What should I study next?">What next?</button>
+        </div>
+        <form class="chat-input-row" id="chatForm">
+            <input id="chatInput" autocomplete="off" placeholder="Ask about your study plan..." />
+            <button type="submit" aria-label="Send message">↑</button>
+        </form>
+    </section>
+</div>
+
+<script src="auth.js"></script>
+<script src="planner.js"></script>
+
+</body>
+
+</html>
